@@ -1,0 +1,76 @@
+body {
+  background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.box {
+  display: inline-block;       
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  margin-left: -1px;
+  margin-bottom: -1px;
+  }
+
+.off {
+  background: transparent;
+}
+
+.on {
+  background-color: rgba(red, green, blue, alpha);
+}
+  
+.btn{
+  background-color: teal;
+  font-weight: bold;
+  color: white
+}
+
+.box:hover { 
+  background: orange;
+}
+
+.center {
+  margin: auto;
+  display: table;
+  margin-top: 10px;
+}
+
+.grid {
+  width: 150px;
+  line-height: 0;
+  margin: auto;
+  margin-top: 20px;
+}
+  
+h1, h2, h3, h4 {
+  color: Black;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  margin-top: 10px;
+}
+
+h4 {
+  margin-top: 0px;
+}
+
+.infoContainer{
+  background-color: rgb(204, 204, 204);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  text-align: center;
+  width: 50%;
+  margin:auto;
+}
+.mItem:hover{
+  background-color: gray;
+}
