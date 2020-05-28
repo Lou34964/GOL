@@ -3,33 +3,30 @@ import ReactDOM from 'react-dom';
 import '../index.css';
 import { ButtonToolbar, MenuItem, DropdownButton, Checkbox } from 'react-bootstrap';
 
-class Box extends React.Component {
-	selectBox = () => {
-		this.props.selectBox(this.props.row, this.props.col);
-	}
+const Box = (props) =>{
+  const selectBox = () => {
+    props.selectBox(props.row, props.col);
+  }
 
-	render() {
-		if(this.props.boxClass == 'box on'){
-		return (
+  if(props.boxClass == 'box on'){
+    return (
 			<div
-				className={this.props.boxClass}
-				id={this.props.id}
-				onClick={this.selectBox}
-				style={this.props.style}
+				className={props.boxClass}
+				id={props.id}
+				onClick={selectBox}
+				style={props.style}
 			/>
 		);
-		}
-		else{
-			return (
-				<div
-					className={this.props.boxClass}
-					id={this.props.id}
-					onClick={this.selectBox}
-				/>
-			);
-		}
-
-	}
+  }
+  else{
+    return (
+      <div
+        className={props.boxClass}
+        id={props.id}
+        onClick={selectBox}
+      />
+    );
+  }
 }
 
 export default Box;
