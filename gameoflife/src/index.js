@@ -3,123 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { ButtonToolbar, MenuItem, DropdownButton, Checkbox } from 'react-bootstrap';
 
-class Box extends React.Component {
-	selectBox = () => {
-		this.props.selectBox(this.props.row, this.props.col);
-	}
-
-	render() {
-		if(this.props.boxClass == 'box on'){
-		return (
-			<div
-				className={this.props.boxClass}
-				id={this.props.id}
-				onClick={this.selectBox}
-				style={this.props.style}
-			/>
-		);
-		}
-		else{
-			return (
-				<div
-					className={this.props.boxClass}
-					id={this.props.id}
-					onClick={this.selectBox}
-				/>
-			);
-		}
-
-	}
-}
-
-class Grid extends React.Component {
-	render() {
-		const width = (this.props.cols * 14);
-		var rowsArr = [];
-
-		var boxClass = "";
-		for (var i = 0; i < this.props.rows; i++) {
-			for (var j = 0; j < this.props.cols; j++) {
-				let boxId = i + "_" + j;
-				let randomcolor = Math.floor(Math.random()*16777215).toString(16)
-				let colstyletxt = `background-color: #${randomcolor}`;
-				if(!this.props.colors){
-					randomcolor='FF0000'
-				}
-				boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
-				rowsArr.push(
-					<Box
-						boxClass={boxClass}
-						key={boxId}
-						boxId={boxId}
-						row={i}
-						col={j}
-						selectBox={this.props.selectBox}
-						style={{backgroundColor: '#' + randomcolor}}
-						colors={this.props.colors}
-					/>
-				);
-			}
-		}
-
-		return (
-			<div className="grid" style={{width: width}}>
-				{rowsArr}
-			</div>
-		);
-	}
-}
-
-class Buttons extends React.Component {
-
-	handleSelect = (evt) => {
-		this.props.gridSize(evt);
-	}
-
-	render() {
-		return (
-			<div className="center">
-				<ButtonToolbar>
-					<button className="btn btn-default" onClick={this.props.step}>
-						Step
-					</button>
-					<button className="btn btn-default" onClick={this.props.playButton}>
-						Play
-					</button>
-					<button className="btn btn-default" onClick={this.props.pauseButton}>
-					  Pause
-					</button>
-					<button className="btn btn-default" onClick={this.props.clear}>
-					  Clear
-					</button>
-					<button className="btn btn-default btn-sp" onClick={this.props.slow}>
-					  Slow
-					</button>
-					<button className="btn btn-default btn-sp" onClick={this.props.fast}>
-					  Fast
-					</button>
-					<button className="btn btn-default btn-sp" onClick={this.props.hyper}>
-					  Hyper
-					</button>
-					<button className="btn btn-default" onClick={this.props.seed}>
-					  Seed
-					</button>
-					<DropdownButton
-						title="Grid Size"
-						id="size-menu"
-						onSelect={this.handleSelect}
-					>
-						<MenuItem eventKey="1" className="mItem">20x10</MenuItem>
-						<MenuItem eventKey="2" className="mItem">50x30</MenuItem>
-						<MenuItem eventKey="3" className="mItem">70x50</MenuItem>
-					</DropdownButton>
-					
-				</ButtonToolbar>
-				<Checkbox onChange={this.props.colors} style={{fontSize: "16"}}>Random Colors</Checkbox>
-			</div>
-			)
-	}
-}
+import Buttons from './comps/Buttons';
+import Grid from './comps/Grid';
 
 class Main extends React.Component {
 	constructor() {
@@ -187,6 +72,7 @@ class Main extends React.Component {
 			gridFull: grid,
 			generation: 0
 		});
+		this.pauseButton();
 	}
 
 	gridSize = (size) => {
