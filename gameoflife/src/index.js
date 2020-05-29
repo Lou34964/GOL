@@ -169,6 +169,7 @@ class Main extends React.Component {
 						<li>Any live cell with two or three live neighbours live on the next generation - Perfect-Pop.</li>
 						<li>Any live cell with 4+ neighbours dies - Over-Pop.</li>
 						<li>Any Dead cell with exactly 3 neighbours becomes alive - Reproduction</li>
+						<li>All cells outside the visable Grid are considered dead.</li>
 					</ul>
 					<br/>
 					<br/>
